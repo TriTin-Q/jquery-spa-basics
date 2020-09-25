@@ -1,7 +1,7 @@
 // console.log(window.location);
 
 let MON_SUPER_SITE = {};
-
+let TOTAL=0;
 let addLogoutButton = function () {
     $('.logout').load('templates/partials/_logout.html');
 }
@@ -59,3 +59,13 @@ handleRequest();
 $(window).on('hashchange', handleRequest);
 
 $('body').on('SECURITY_LOGOUT', handleRequest);
+
+$('.PanierBtn').click(function(event){
+    event.preventDefault();
+    $('.container').load("templates/panier.html");
+    // $('#listePanier').html('<ul class="list-group mb-3" id="listePanier></ul>');
+
+    
+});
+
+$('.total').html(`${TOTAL} €`)
