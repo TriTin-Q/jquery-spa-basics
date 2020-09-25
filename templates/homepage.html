@@ -10,3 +10,11 @@
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nisi omnis deleniti hic quibusdam modi. Ipsum odio unde amet a, enim necessitatibus iste. Numquam harum in deserunt tempora iusto, impedit cum!
     </p>
 </div>
+
+<script>
+    if(MON_SUPER_SITE.security){
+        $('.jumbotron').prepend(
+            `<h2>Hi ${MON_SUPER_SITE.security.firstName}</h2>`
+        )
+    }
+</script>

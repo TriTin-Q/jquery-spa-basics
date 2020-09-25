@@ -8,8 +8,10 @@ session_start();
 
 /** Si l'utilisateur est déjà connecté, retourne l'utilisateur connecté. */
 if (isset($_SESSION['security'])) {
-    echo json_encode($_SESSION['security']);
-
+    // echo json_encode($_SESSION['security']);
+    echo json_encode([
+        'user' => $_SESSION['security']
+    ]);
     exit;
 }
 

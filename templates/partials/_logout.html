@@ -1,3 +1,23 @@
-<form action="/logout.php" method="POST">
+<form action="/jquery-spa-basics/logout.php" method="POST" id="logout-form">
     <input type="submit"  name="logout" value="Deconnexion">
 </form>
+
+<script>
+      $('#logout-form').submit(function(event){
+        event.preventDefault();
+
+        // let data = $(this).serializeArray();
+
+        $.post($(this).attr('action'), [{name:'logout',value:'Deconnexion'}])
+        .then(function(response){
+            response = JSON.parse(response);
+
+            if(response.success){
+                $('nav .logout').html('');
+                MON_SUPER_SITE.security = false;
+                // addLoginButton();
+                $('body').trigger('SECURITY_LOGOUT');
+            }
+        })
+      });
+</script>

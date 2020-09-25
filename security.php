@@ -1,5 +1,8 @@
 <?php
-
+/**
+ * @info $_GET 
+ * retourner si un utilisateur est connecté
+ */
 session_start();
 
 if (isset($_SESSION['security'])) {

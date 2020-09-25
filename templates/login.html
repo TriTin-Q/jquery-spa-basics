@@ -1,4 +1,4 @@
-<form action="/login.php" method="POST" id="login-form">
+<form action="/jquery-spa-basics/login.php" method="POST" id="login-form">
     <!-- @info si l'utilisateur s'est déjà connecté une première fois, on lui affiche l'email qu'il avait utilisé dans le champ email -->
     <div class="form-group">
         <label for="email">Email</label>
@@ -9,5 +9,28 @@
         <input class="form-control" type="password" id="password" name="password">
     </div>
 
-    <input type="submit" class="btn btn-success">
+    <input type="submit"  class="btn btn-success">
 </form>
+
+<script>
+    $('#login-form').submit(function(event){
+        event.preventDefault();
+
+        let data = $(this).serializeArray();
+        // console.log($(this).serializeArray());
+        //attr ==> Retourne ce que donne "action du formulaire"
+        $.post($(this).attr('action'),data)
+        .then(function(response){
+            // console.log(response);
+            response = JSON.parse(response);
+
+            if(response.error){
+                $('.alert').html(response.error);
+                // console.log(response.error);
+                return;
+            }
+            window.location.hash = "#homepage";
+        })
+    })
+</script>
+
